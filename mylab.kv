@@ -1,0 +1,97 @@
+<SmartParking>
+    orientation: "vertical"
+    MDToolbar:
+        title: "SMART PARKING"
+        elevation: 10
+    MDBottomNavigation:
+        id: "main"
+
+        MDBottomNavigationItem:
+            name: "live parking"
+            icon: "parking"
+            on_tab_press: app.on_parking_press(False)
+            GridLayout:
+                cols: 2
+                padding: "10dp","10dp","10dp","10dp"
+                spacing: "30dp", "30dp"
+                MDCard:
+                    elevation: 10
+                    GridLayout:
+                        padding: "5dp","5dp","5dp","5dp"
+                        spacing: "5dp", "2dp"
+                        cols: 4
+                MDCard:
+                    elevation: 10
+                    GridLayout:
+                        padding: "5dp","5dp","5dp","5dp"
+                        spacing: "5dp", "2dp"
+                        cols: 4
+                MDCard:
+                    elevation: 10
+                    GridLayout:
+                        padding: "5dp","5dp","5dp","5dp"
+                        spacing: "5dp", "2dp"
+                        cols: 4
+                MDCard:
+                    elevation: 10
+                    GridLayout:
+                        padding: "5dp","5dp","5dp","5dp"
+                        spacing: "5dp", "2dp"
+                        cols: 4
+
+        MDBottomNavigationItem:
+            name: "connect"
+            icon: "power"
+
+            MDFloatingActionButton:
+                id: power
+                icon: "power"
+                pos_hint : {'center_x': 0.5, 'center_y':0.7}
+                user_font_size: "70dp"
+                md_bg_color: app.color['red']
+                elevation: 12
+                on_press: app.connection_main(self)
+            MDLabel:
+                text: app.connect_status
+                font_name: "Finder.ttf"
+                font_size: "35dp"
+                pos_hint : {'center_x': 0.5, 'center_y':0.4 }
+                color : power.md_bg_color
+                halign: 'center'
+            MDLabel:
+                text: app.connect_status_hint
+                font_name: "Finder.ttf"
+                font_size: "25dp"
+                pos_hint : {'center_x': 0.5, 'center_y':0.3 }
+                color : power.md_bg_color
+                halign: 'center'
+
+
+        MDBottomNavigationItem:
+            name: "search"
+            icon: "table-search"
+            on_tab_press: app.on_search_press(True)
+
+            MDCard:
+                size_hint: 0.5,0.5
+                pos_hint: {'center_x':0.5, 'center_y': 0.7}
+                elevation: 11
+                padding: 7
+                orientation: "vertical"
+
+                MDLabel:
+                    font_name:"theboldfont.ttf"
+                    text: "CAR FINDER"
+                    size_hint: 1,1
+                    font_size: "50dp"
+                    color: (98/255.0, 0, 234/255.0,1)
+                    halign: 'center'
+
+                MDTextField:
+                    hint_text: "Enter Vehicle Number."
+                    helper_text: "max: 4 digits"
+                    max_text_len: 4
+                    helper_text_mode: "on_focus"
+                    on_text_validate: app.on_text_validate(self)
+
+
